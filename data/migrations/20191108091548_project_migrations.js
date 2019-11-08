@@ -4,11 +4,11 @@ exports.up = function(knex) {
     table.increments();
     table.string('name').notNullable();
     table.string('description').notNullable();
-    table.boolean('completed').notNullable().defaultTo(false);
+    table.boolean('completed').defaultTo(false);
   }).createTable('tasks', table => {
     table.increments();
-    table.string('name').notNullable();
-    table.string('description').defaultTo('none provided');
+    table.string('description').notNullable();
+    table.string('notes').defaultTo('none provided');
     table.integer('project_id').references('id').inTable('projects');
   }).createTable('resources', table => {
     table.increments();
