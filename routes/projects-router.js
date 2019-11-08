@@ -18,4 +18,24 @@ router.get('/', async (req,res) => {
   }
 })
 
+router.post('/', async (req,res) => {
+  try {
+    const newProject = {
+      name: req.body.name,
+      description: req.body.description,
+      completed: req.body.completed ? 'true' : 'false'
+    }
+
+    const projects = await helpers.addProject(newProject);
+    if(projects){
+      res.status(201).json(projects);
+    } else {
+      res.status(400).json({ message: 'Check Insertion Data' });
+    }
+  } catch(err) {
+    console.log(err);
+    res.status(500).json({ message: `internal error` })
+  }
+})
+
 module.exports = router;

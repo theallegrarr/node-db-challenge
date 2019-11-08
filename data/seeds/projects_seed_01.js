@@ -8,17 +8,17 @@ exports.seed = function(knex) {
         { 
           name: 'Embark on the Odyssey', 
           description: 'Meet Odysseus on the Island', 
-          completed: true,
+          completed: 'true',
         },
         { 
           name: 'Liberate the slaves', 
           description: `Join Flint's war`, 
-          completed: false,
+          completed: 'false',
         },
         { 
           name: 'Reach tatooine', 
           description: `Find the fictional planet`, 
-          completed: false,
+          completed: 'false',
         }
       ]);
     });
