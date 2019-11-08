@@ -47,7 +47,7 @@ WHERE tasks.project_id = projects.id
 function getTasks(){
   return db.select('*')
           .from('tasks')
-          .leftJoin('projects', 'tasks.project_id', 'projects.id')
+          .leftJoin('projects', 'projects.id' , 'tasks.project_id')
 }
 
 function addTask(taskData){

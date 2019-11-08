@@ -7,27 +7,27 @@ exports.seed = function(knex) {
       return knex('tasks').insert([
         { 
           notes: 'Find your Boat', 
-          description: 'Find a boat to set sail', 
+          task_description: 'Find a boat to set sail', 
           project_id: 1,
         },
         { 
           notes: 'Find the wind', 
-          description: 'The Wind must blow south', 
+          task_description: 'The Wind must blow south', 
           project_id: 1,
         },
         { 
           notes: '', 
-          description: 'Find Edward Teach', 
+          task_description: 'Find Edward Teach', 
           project_id: 2,
         },
         { 
           notes: 'Leave for skeleton Island', 
-          description: 'Find course to skeleton island', 
+          task_description: 'Find course to skeleton island', 
           project_id: 2,
         },
         { 
           notes: 'Find a spacecraft', 
-          description: 'Find a spacecraft', 
+          task_description: 'Find a spacecraft', 
           project_id: 3,
         }
       ]);

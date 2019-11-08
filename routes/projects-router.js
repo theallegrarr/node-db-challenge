@@ -18,30 +18,7 @@ router.get('/', async (req,res) => {
   }
 })
 
-router.get('/:id', async (req,res) => {
-  try {
-    const project = await helpers.getProjectById(req.params.id);
-    if(!project)res.status(404).json({ message: `no projejct found` });
-    const tasks = await helpers.getTaskByProjectId(req.params.id);
 
-    const result = {
-      id: project.id,
-      name: project.name,
-      description: project.description,
-      completed: project.completed,
-      tasks: tasks,
-    }
-
-    if(result){
-      res.status(200).json(result);
-    } else {
-      res.status(200).json({ message: 'No Projects Found' });
-    }
-  } catch(err) {
-    console.log(err);
-    res.status(500).json({ message: `internal error` })
-  }
-})
 
 router.post('/', async (req,res) => {
   try {
@@ -128,6 +105,31 @@ router.post('/:id/tasks', async (req,res) => {
       res.status(201).json(`Task with ID ${result} added`);
     } else {
       res.status(400).json({ message: 'Description not provided' });
+    }
+  } catch(err) {
+    console.log(err);
+    res.status(500).json({ message: `internal error` })
+  }
+})
+
+router.get('/:id', async (req,res) => {
+  try {
+    const project = await helpers.getProjectById(req.params.id);
+    if(!project)res.status(404).json({ message: `no projejct found` });
+    const tasks = await helpers.getTaskByProjectId(req.params.id);
+
+    const result = {
+      id: project.id,
+      name: project.name,
+      description: project.description,
+      completed: project.completed,
+      tasks: tasks,
+    }
+
+    if(result){
+      res.status(200).json(result);
+    } else {
+      res.status(200).json({ message: 'No Projects Found' });
     }
   } catch(err) {
     console.log(err);
