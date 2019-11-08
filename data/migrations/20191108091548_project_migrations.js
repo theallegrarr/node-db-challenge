@@ -9,7 +9,7 @@ exports.up = function(knex) {
     table.increments();
     table.string('description').notNullable();
     table.string('notes').defaultTo('none provided');
-    table.integer('project_id').references('id').inTable('projects');
+    table.integer('project_id').notNullable().references('id').inTable('projects');
   }).createTable('resources', table => {
     table.increments();
     table.string('name').notNullable();
