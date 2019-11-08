@@ -38,4 +38,18 @@ router.post('/', async (req,res) => {
   }
 })
 
+router.get('/resources', async (req,res) => {
+  try {
+    const projects = await helpers.getResources();
+    if(projects){
+      res.status(200).json(projects);
+    } else {
+      res.status(200).json({ message: 'No Resources Found' });
+    }
+  } catch(err) {
+    console.log(err);
+    res.status(500).json({ message: `internal error` })
+  }
+})
+
 module.exports = router;
